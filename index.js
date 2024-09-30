@@ -5,8 +5,12 @@ const cors = require('cors');
 const app = express();
 const port = 3000;
 
-// Use cors middleware
-app.use(cors());
+
+app.use(cors({
+    origin: '*', // Allow all origins (for development only; restrict in production)
+    methods: ['GET', 'POST', 'PUT', 'DELETE'], // Explicitly allow these methods
+    allowedHeaders: ['Content-Type', 'Authorization'] // Allow specific headers
+}));
 
 // MongoDB connection URI
 const uri = `mongodb+srv://awesome:zBRLpodNN0PFL0Tx@cluster0.j0rll9s.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0`;
